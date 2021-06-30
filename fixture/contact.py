@@ -60,3 +60,14 @@ class ContactHelper:
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
+
+    def modify(self, contact):
+        wd = self.app.wd
+        # select first contact
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        # edit address
+        wd.find_element_by_name("address").click()
+        wd.find_element_by_name("address").clear()
+        wd.find_element_by_name("address").send_keys(contact.address)
+        wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
+        self.app.return_to_home_page()
