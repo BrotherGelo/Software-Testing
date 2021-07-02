@@ -14,9 +14,3 @@ class Contact:
         self.bday = bday
         self.bmonth = bmonth
         self.byear = byear
-
-
-class Modify:
-
-    def __init__(self, address):
-        self.address = address

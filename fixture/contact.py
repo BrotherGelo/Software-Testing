@@ -10,9 +10,16 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
-    def create(self, contact):
+    def select_first_contact(self):
         wd = self.app.wd
-        self.init_creation_of_new_contact()
+        wd.find_element_by_name("selected[]").click()
+
+    def edit_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+
+    def fill(self, contact):
+        wd = self.app.wd
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
@@ -50,24 +57,28 @@ class ContactHelper:
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(contact.byear)
+
+    def create(self, contact):
+        wd = self.app.wd
+        self.init_creation_of_new_contact()
+        self.fill(contact)
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.app.return_to_home_page()
 
     def delete_first_contact(self):
         wd = self.app.wd
-        # select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.app.return_to_home_page()
+        self.select_first_contact()
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
 
-    def modify(self, contact):
+    def modify_first_contact(self, contact):
         wd = self.app.wd
-        # select first contact
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        # edit address
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(contact.address)
-        wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
         self.app.return_to_home_page()
+        # select first contact
+        self.edit_first_contact()
+        self.fill(contact)
+        wd.find_element_by_name("update").click()
+        self.app.return_to_home_page()
+
