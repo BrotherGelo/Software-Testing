@@ -14,7 +14,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def edit_first_contact(self):
+    def open_first_contact_for_editing(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
 
@@ -31,10 +31,10 @@ class ContactHelper:
         self.change_field_value("mobile", contact.mobile)
         self.change_field_value("email", contact.email)
         self.change_field_value("byear", contact.byear)
-        self.change_bdate_value("bday", contact.bday)
-        self.change_bdate_value("bmonth", contact.bmonth)
+        self.change_select_value("bday", contact.bday)
+        self.change_select_value("bmonth", contact.bmonth)
 
-    def change_bdate_value(self, field_name, text):
+    def change_select_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
             wd.find_element_by_name(field_name).click()
@@ -65,8 +65,7 @@ class ContactHelper:
     def modify_first_contact(self, contact):
         wd = self.app.wd
         self.app.return_to_home_page()
-        # select first contact
-        self.edit_first_contact()
+        self.open_first_contact_for_editing()
         self.fill_contact_form(contact)
         wd.find_element_by_name("update").click()
         self.app.return_to_home_page()
