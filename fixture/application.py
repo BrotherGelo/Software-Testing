@@ -3,6 +3,7 @@ from fixture.session import SessionHelper
 from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
 
+
 class Application:
 
     def __init__(self):
@@ -25,7 +26,7 @@ class Application:
 
     def return_to_home_page(self):
         wd = self.wd
-        if not (wd.current_url.endswith("/addressbook/")):
+        if not (wd.current_url.endswith("addressbook/")):
             wd.find_element_by_link_text("home").click()
 
     def destroy(self):

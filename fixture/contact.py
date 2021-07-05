@@ -6,8 +6,10 @@ class ContactHelper:
 
     def __init__(self, app):
         self.app = app
+        #self.wd = app.wd
 
     def init_creation_of_new_contact(self):
+        #self.app = app
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
@@ -20,7 +22,6 @@ class ContactHelper:
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
 
     def fill_contact_form(self, contact):
-        wd = self.app.wd
         self.change_field_value("firstname", contact.firstname)
         self.change_field_value("middlename", contact.middlename)
         self.change_field_value("lastname", contact.lastname)
@@ -59,9 +60,11 @@ class ContactHelper:
         wd = self.app.wd
         self.app.return_to_home_page()
         self.select_first_contact()
-        # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
+        wd.find_element_by_link_text("home").click()
+        #self.app.return_to_home_page()
+        #wd.find_element_by_xpath("//input[@value='Send e-Mail']")
 
     def modify_first_contact(self, contact):
         wd = self.app.wd
@@ -80,8 +83,9 @@ class ContactHelper:
         wd = self.app.wd
         self.app.return_to_home_page()
         contacts = []
-        for element in wd.find_elements_by_css_selector("tr"):
-            text = element.text
+        for element in wd.find_elements_by_name("entry"):
             id = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contact(firstname=text, id=id))
+            firstname = element.find_elements_by_tag_name("td")[2].text
+            lastname = element.find_elements_by_tag_name("td")[1].text
+            contacts.append(Contact(id=id, firstname=firstname, lastname=lastname))
         return contacts

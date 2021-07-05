@@ -20,7 +20,6 @@ class GroupHelper:
         self.open_group_page()
         # init group creation
         wd.find_element_by_name("new").click()
-        # fill group form
         self.fill_group_form(group)
         # submit group creation
         wd.find_element_by_name("submit").click()
