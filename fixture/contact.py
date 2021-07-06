@@ -4,12 +4,11 @@ from model.contact import Contact
 
 class ContactHelper:
 
+
     def __init__(self, app):
         self.app = app
-        #self.wd = app.wd
 
     def init_creation_of_new_contact(self):
-        #self.app = app
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
@@ -62,9 +61,7 @@ class ContactHelper:
         self.select_first_contact()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
-        wd.find_element_by_link_text("home").click()
-        #self.app.return_to_home_page()
-        #wd.find_element_by_xpath("//input[@value='Send e-Mail']")
+        self.app.return_to_home_page()
 
     def modify_first_contact(self, contact):
         wd = self.app.wd
