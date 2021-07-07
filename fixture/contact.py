@@ -1,3 +1,5 @@
+import optparse
+
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
 
@@ -12,13 +14,15 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
-    def select_first_contact(self):
-        wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+    def select_first_contact(self, index):
+        self.select_contact_by_index(index)
 
     def open_first_contact_for_editing(self):
+        self.open_contact_by_index_for_editing(0)
+
+    def open_contact_by_index_for_editing(self, index):
         wd = self.app.wd
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
 
     def fill_contact_form(self, contact):
         self.change_field_value("firstname", contact.firstname)
@@ -57,18 +61,28 @@ class ContactHelper:
         self.contact_cache = None
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.app.return_to_home_page()
-        self.select_first_contact()
+        self.select_contact_by_index(index)
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
         self.app.return_to_home_page()
         self.contact_cache = None
 
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
     def modify_first_contact(self, contact):
+        self.delete_contact_by_index(0)
+
+    def modify_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.app.return_to_home_page()
-        self.open_first_contact_for_editing()
+        self.open_contact_by_index_for_editing(index)
         self.fill_contact_form(contact)
         wd.find_element_by_name("update").click()
         self.app.return_to_home_page()
