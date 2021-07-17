@@ -9,7 +9,7 @@ def random_string(prefix, maxlen):
     symbols = string.ascii_letters + string.digits #+ string.punctuation + " "*10
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
-# Ошибка при лишних пробелах в начале поля. Нужно сортировать при проверке. 
+# Ошибка при лишних пробелах в начале поля. Нужно сортировать при проверке.
 testdata = [Contact(firstname="", middlename="", lastname="", nickname="", title="", company="", address="",
                     homephone="", workphone="", mobilephone="", secondaryphone="", email="", email2="", email3="")] + [
            Contact(firstname=random_string("firstname", 5), lastname=random_string("lastname", 6),
