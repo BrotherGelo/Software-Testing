@@ -1,12 +1,14 @@
 import random
-
 from model.group import Group
-from random import randrange
+
+
+def check_empty_group_list(app, db):
+    if len(db.get_group_list()) == 0:
+        app.group.create(Group(name="TEST DELETE"))
 
 
 def test_delete_random_group(app, db, check_ui):
-    if len(db.get_group_list()) == 0:
-        app.group.create(Group(name="test"))
+    check_empty_group_list(app, db)
     old_groups = db.get_group_list()
     group = random.choice(old_groups)
     app.group.delete_group_by_id(group.id)

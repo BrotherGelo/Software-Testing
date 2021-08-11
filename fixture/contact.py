@@ -22,6 +22,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
 
+    def open_contact_by_id_for_editing(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector('a[href="edit.php?id=%s"]' % id).click()
+
     def fill_contact_form(self, contact):
         self.change_field_value("firstname", contact.firstname)
         self.change_field_value("middlename", contact.middlename)
@@ -74,9 +78,24 @@ class ContactHelper:
         self.app.return_to_home_page()
         self.contact_cache = None
 
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.return_to_home_page()
+        self.select_contact_by_id(id)
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        wd.switch_to_alert().accept()
+        self.app.return_to_home_page()
+        self.contact_cache = None
+
     def select_contact_by_index(self, index):
         wd = self.app.wd
+        self.app.return_to_home_page()
         wd.find_elements_by_name("selected[]")[index].click()
+
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.return_to_home_page()
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
     def modify_first_contact(self, contact):
         self.delete_contact_by_index(0)
@@ -86,6 +105,15 @@ class ContactHelper:
         self.app.return_to_home_page()
         self.open_contact_by_index_for_editing(index)
         self.fill_contact_form(contact)
+        wd.find_element_by_name("update").click()
+        self.app.return_to_home_page()
+        self.contact_cache = None
+
+    def modify_contact_by_id(self, id, mod_contact):
+        wd = self.app.wd
+        self.app.return_to_home_page()
+        self.open_contact_by_id_for_editing(id)
+        self.fill_contact_form(mod_contact)
         wd.find_element_by_name("update").click()
         self.app.return_to_home_page()
         self.contact_cache = None
@@ -149,4 +177,3 @@ class ContactHelper:
         secondaryphone = re.search("P: (.*)", text).group(1)
         return Contact(homephone=homephone, mobilephone=mobilephone,
                        workphone=workphone, secondaryphone=secondaryphone)
-
