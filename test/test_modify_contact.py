@@ -10,7 +10,7 @@ def check_empty_contact_list(app, db):
 
 def test_modify_random_contact(app, db, check_ui):
     check_empty_contact_list(app, db)
-    mod_contact = (Contact(title="TEST TITLE FOR MODIFY"))
+    mod_contact = (Contact(firstname="FIRSTNAME TO MODIFY"))
     old_contacts = db.get_contact_list()
     contact = random.choice(old_contacts)
     index = old_contacts.index(contact)
