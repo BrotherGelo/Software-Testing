@@ -1,0 +1,72 @@
+(env) PS E:\Projects\Software-Testing> py.test --alluredir allure-results test
+========================================================================================================== test session starts ===========================================================================================================
+platform win32 -- Python 3.9.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: E:\Projects\Software-Testing
+plugins: allure-pytest-2.9.43
+collected 23 items                                                                                                                                                                                                                        
+
+test\test_add_contact.py ....                                                                                                                                                                                                       [ 17%]
+test\test_add_contact_to_group.py .                                                                                                                                                                                                 [ 21%]
+test\test_add_group.py .F..F......                                                                                                                                                                                                  [ 69%]
+test\test_db_matches_ui.py .                                                                                                                                                                                                        [ 73%]
+test\test_del_contact.py .                                                                                                                                                                                                          [ 78%]
+test\test_del_group.py .                                                                                                                                                                                                            [ 82%]
+test\test_fields_contact.py .                                                                                                                                                                                                       [ 86%]
+test\test_modify_contact.py .                                                                                                                                                                                                       [ 91%]
+test\test_modify_group.py .                                                                                                                                                                                                         [ 95%]
+test\test_remove_contact_from_group.py .                                                                                                                                                                                            [100%]
+
+================================================================================================================ FAILURES ================================================================================================================
+_____________________________________________________________________________ test_add_group[None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO] ______________________________________________________________________________
+
+app = <fixture.application.Application object at 0x000001C3CC959D00>, db = <fixture.db.DbFixture object at 0x000001C3CC959BB0>, check_ui = False, json_groups = None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO
+
+    def test_add_group(app, db, check_ui, json_groups):
+        group = json_groups
+        old_groups = db.get_group_list()
+        app.group.create(group)
+        new_groups = db.get_group_list()
+        old_groups.append(group)
+>       assert old_groups == new_groups
+E       assert [8:TEST GROUP...ter*aJ}b, ...] == [8:TEST GROUP...ter*aJ}b, ...]
+E         At index 40 diff: None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO != 50:namei0:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO
+E         Use -v to get the full diff
+
+test\test_add_group.py:14: AssertionError
+______________________________________________________________________________________ test_add_group[None:name$7"l:header[ -za%BL5 :footerco'.Q*] _______________________________________________________________________________________
+
+app = <fixture.application.Application object at 0x000001C3CC959D00>, db = <fixture.db.DbFixture object at 0x000001C3CC959BB0>, check_ui = False, json_groups = None:name$7"l:header[ -za%BL5 :footerco'.Q*
+
+    def test_add_group(app, db, check_ui, json_groups):
+        group = json_groups
+        old_groups = db.get_group_list()
+        app.group.create(group)
+        new_groups = db.get_group_list()
+        old_groups.append(group)
+>       assert old_groups == new_groups
+E       assert [8:TEST GROUP...ter*aJ}b, ...] == [8:TEST GROUP...ter*aJ}b, ...]
+E         Left contains one more item: None:name$7"l:header[ -za%BL5 :footerco'.Q*
+E         Use -v to get the full diff
+
+test\test_add_group.py:14: AssertionError
+============================================================================================================ warnings summary ============================================================================================================
+env\lib\site-packages\pony\thirdparty\compiler\transformer.py:32
+  e:\projects\software-testing\env\lib\site-packages\pony\thirdparty\compiler\transformer.py:32: DeprecationWarning: The parser module is deprecated and will be removed in future versions of Python
+    import parser
+
+env\lib\site-packages\pony\thirdparty\compiler\transformer.py:33
+  e:\projects\software-testing\env\lib\site-packages\pony\thirdparty\compiler\transformer.py:33: DeprecationWarning: The symbol module is deprecated and will be removed in future versions of Python
+    import symbol
+
+test/test_del_contact.py::test_delete_random_contact
+  E:\Projects\Software-Testing\fixture\contact.py:87: DeprecationWarning: use driver.switch_to.alert instead
+    wd.switch_to_alert().accept()
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+======================================================================================================== short test summary info =========================================================================================================
+FAILED test/test_add_group.py::test_add_group[None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO] - assert [8:TEST GROUP...ter*aJ}b, ...] == [8:TEST GROUP...ter*aJ}b, ...]
+FAILED test/test_add_group.py::test_add_group[None:name$7"l:header[ -za%BL5 :footerco'.Q*] - assert [8:TEST GROUP...ter*aJ}b, ...] == [8:TEST GROUP...ter*aJ}b, ...]
+=============================================================================================== 2 failed, 21 passed, 3 warnings in 40.60s ================================================================================================
+(env) PS E:\Projects\Software-Testing> E:\allure-2.14.0\bin\allure.bat generate allure-results
+Report successfully generated to allure-report
+(env) PS E:\Projects\Software-Testing>

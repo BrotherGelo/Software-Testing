@@ -1,0 +1,152 @@
+{
+  "uid" : "fc42dabb00029c5d",
+  "name" : "test_add_group[None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO]",
+  "fullName" : "test.test_add_group#test_add_group[None:namei0<!1rgL:headerv{uRq:m`1^UUkL1",
+  "historyId" : "0232846c7d6b415df18f0f9a7680a345",
+  "time" : {
+    "start" : 1629212876937,
+    "stop" : 1629212877891,
+    "duration" : 954
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert [8:TEST GROUP...ter*aJ}b, ...] == [8:TEST GROUP...ter*aJ}b, ...]\n  At index 40 diff: None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO != 50:namei0:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO\n  Use -v to get the full diff",
+  "statusTrace" : "app = <fixture.application.Application object at 0x000001C3CC959D00>, db = <fixture.db.DbFixture object at 0x000001C3CC959BB0>, check_ui = False, json_groups = None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO\n\n    def test_add_group(app, db, check_ui, json_groups):\n        group = json_groups\n        old_groups = db.get_group_list()\n        app.group.create(group)\n        new_groups = db.get_group_list()\n        old_groups.append(group)\n>       assert old_groups == new_groups\nE       assert [8:TEST GROUP...ter*aJ}b, ...] == [8:TEST GROUP...ter*aJ}b, ...]\nE         At index 40 diff: None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO != 50:namei0:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO\nE         Use -v to get the full diff\n\ntest\\test_add_group.py:14: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "db",
+    "time" : {
+      "start" : 1629212852681,
+      "stop" : 1629212852686,
+      "duration" : 5
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1629212876936,
+      "stop" : 1629212876937,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1629212876913,
+      "stop" : 1629212876936,
+      "duration" : 23
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "stop",
+    "time" : {
+      "start" : 1629212852681,
+      "stop" : 1629212852681,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1629212892257,
+      "stop" : 1629212892257,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1629212892258,
+      "stop" : 1629212893179,
+      "duration" : 921
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_group"
+  }, {
+    "name" : "host",
+    "value" : "oosipenko-pc"
+  }, {
+    "name" : "thread",
+    "value" : "7372-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_groups",
+    "value" : "None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "fc42dabb00029c5d.json",
+  "parameterValues" : [ "None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO" ]
+}

@@ -1,0 +1,43 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert [8:TEST GROUP...ter*aJ}b, ...] == [8:TEST GROUP...ter*aJ}b, ...]\n  At index 40 diff: None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO != 50:namei0:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO\n  Use -v to get the full diff",
+      "children" : [ {
+        "name" : "test_add_group[None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO]",
+        "uid" : "fc42dabb00029c5d",
+        "parentUid" : "10dd284e7bba7195d0543fde56f8a8d9",
+        "status" : "failed",
+        "time" : {
+          "start" : 1629212876937,
+          "stop" : 1629212877891,
+          "duration" : 954
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "None:namei0<!1rgL:headerv{uRq:m`1^UUkL1[?:`:footerf..$UWRufbO" ]
+      } ],
+      "uid" : "10dd284e7bba7195d0543fde56f8a8d9"
+    }, {
+      "name" : "AssertionError: assert [8:TEST GROUP...ter*aJ}b, ...] == [8:TEST GROUP...ter*aJ}b, ...]\n  Left contains one more item: None:name$7\"l:header[ -za%BL5 :footerco'.Q*\n  Use -v to get the full diff",
+      "children" : [ {
+        "name" : "test_add_group[None:name$7\"l:header[ -za%BL5 :footerco'.Q*]",
+        "uid" : "3278b56dcd6a628d",
+        "parentUid" : "05de86cdc5c4013789b0b32a518d6771",
+        "status" : "failed",
+        "time" : {
+          "start" : 1629212879952,
+          "stop" : 1629212880903,
+          "duration" : 951
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "None:name$7\"l:header[ -za%BL5 :footerco'.Q*" ]
+      } ],
+      "uid" : "05de86cdc5c4013789b0b32a518d6771"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}
