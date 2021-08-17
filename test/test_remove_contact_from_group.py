@@ -1,9 +1,6 @@
 from model.contact import Contact
 from model.group import Group
 import random
-from fixture.orm import ORMFixture
-
-orm = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 
 
 def check_empty(app, db):
@@ -19,7 +16,7 @@ def check_empty(app, db):
         app.contact.add_contact_to_group(contact, group)
 
 
-def test_remove_contact_from_group(app, db):
+def test_remove_contact_from_group(app, db, orm):
     check_empty(app, db)
     list_groups = db.get_groups_list_with_contacts()
     group = random.choice(list_groups)

@@ -5,6 +5,7 @@ import os.path
 import importlib
 import jsonpickle
 from fixture.db import DbFixture
+from fixture.orm import ORMFixture
 
 
 fixture = None
@@ -18,6 +19,11 @@ def load_config(file):
         with open(config_file) as conf:
             target = json.load(conf)
     return target
+
+
+@pytest.fixture(scope="session")
+def orm():
+    return ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 
 
 @pytest.fixture

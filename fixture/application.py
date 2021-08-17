@@ -2,17 +2,17 @@ from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
-from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.firefox.options import Options
 
-options = Options()
-options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+#options = Options()
+#options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 #driver = webdriver.Firefox(options=options, executable_path="C:\Windows\SysWOW64\geckodriver.exe")
 
 class Application:
 
     def __init__(self, browser, base_url):
         if browser == "firefox":
-            self.wd = webdriver.Firefox(options=options, executable_path="C:\Windows\SysWOW64\geckodriver.exe")
+            self.wd = webdriver.Firefox()#(options=options, executable_path="C:\Windows\SysWOW64\geckodriver.exe")
         elif browser == "chrome":
             self.wd = webdriver.Chrome()
         elif browser == "ie":
