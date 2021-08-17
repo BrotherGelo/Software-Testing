@@ -5,7 +5,8 @@ from model.contact import Contact
 def check_empty_list(app, db):
     if len(db.get_contact_list()) == 0:
         app.contact.create(
-            Contact(firstname="TEST_Vasya", middlename="TEST_Vasiylyevich", lastname="TEST_Pupkin", nickname="TEST_Vasyan3000",
+            Contact(firstname="TEST_Vasya", middlename="TEST_Vasiylyevich", lastname="TEST_Pupkin",
+                    nickname="TEST_Vasyan3000",
                     title="TEST_SYPER VASYA", company="TEST_international", address="TEST_bassejnaya street",
                     homephone="8-626-256-27-27", workphone="+7(777)227 27 27", mobilephone="8(800)555-35-35",
                     secondaryphone="682828", email="TEST_vasyanT1000@vasya.ru", email2="TEST_vasyanT1001@vasya.ru",
@@ -32,32 +33,23 @@ def test_compare_all_fields(app, db):
         assert contact_ui.all_phones_from_home_page == merge_phones_like_on_home_page(contact_db)
         assert contact_ui.all_emails_from_home_page == merge_emails_like_on_home_page(contact_db)
 
+
 """
 def test_compare_firstname_on_home_page(app):
     contact_from_edit_page, contact_from_home_page = preconditions_home_page(app)
     assert contact_from_home_page.firstname == contact_from_edit_page.firstname
-
-
 def test_compare_lastname_on_home_page(app):
     contact_from_edit_page, contact_from_home_page = preconditions_home_page(app)
     assert contact_from_home_page.lastname == contact_from_edit_page.lastname
-
-
 def test_compare_address_on_home_page(app):
     contact_from_edit_page, contact_from_home_page = preconditions_home_page(app)
     assert contact_from_home_page.address == contact_from_edit_page.address
-
-
 def test_emails_on_home_page(app):
     contact_from_edit_page, contact_from_home_page = preconditions_home_page(app)
     assert contact_from_home_page.all_emails_from_home_page == merge_emails_like_on_home_page(contact_from_edit_page)
-
-
 def test_phones_on_home_page(app):
     contact_from_edit_page, contact_from_home_page = preconditions_home_page(app)
     assert contact_from_home_page.all_phones_from_home_page == merge_phones_like_on_home_page(contact_from_edit_page)
-
-
 def test_phones_on_contact_view_page(app):
     check_empty_list(app)
     index = randrange(len(app.contact.get_contact_list()))
@@ -67,7 +59,7 @@ def test_phones_on_contact_view_page(app):
     assert contact_from_view_page.workphone == contact_from_edit_page.workphone
     assert contact_from_view_page.mobilephone == contact_from_edit_page.mobilephone
     assert contact_from_view_page.secondaryphone == contact_from_edit_page.secondaryphone
-    
+
 def preconditions_home_page(app):
     check_empty_list(app)
     index = randrange(len(app.contact.get_contact_list()))
@@ -75,6 +67,7 @@ def preconditions_home_page(app):
     contact_from_edit_page = app.contact.get_contact_info_from_edit_page(index)
     return contact_from_edit_page, contact_from_home_page
 """
+
 
 def clear(s):
     return re.sub("[() -]", "", s)
@@ -91,7 +84,3 @@ def merge_phones_like_on_home_page(contact):
 def merge_emails_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
                             filter(lambda x: x is not None, [contact.email, contact.email2, contact.email3])))
-
-
-
-
