@@ -116,4 +116,11 @@ class GroupHelper:
                 self.group_cache.append(Group(name=text, id=id))
         return list(self.group_cache)
 
+    def get_free_group_list(self, db, orm):
+        free_groups = []
+        for i in db.get_group_list():
+            contacts_number = len(orm.get_contacts_in_group(i))
+            if contacts_number != len(orm.get_contact_list()):
+                free_groups.append(i)
+        return free_groups
 

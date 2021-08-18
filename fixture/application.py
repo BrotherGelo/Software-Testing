@@ -2,6 +2,8 @@ from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
+#from fixture.db import DbFixture
+#from fixture.orm import ORMFixture
 #from selenium.webdriver.firefox.options import Options
 
 #options = Options()
@@ -25,6 +27,8 @@ class Application:
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
+        #self.db = DbFixture(self)
+        #self.orm = ORMFixture(self)
         self.base_url = base_url
 
     def is_valid(self):
